@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="vario-cloud-ui-version" content="1.0.0" />
+
+    <script defer type="module" src="node_modules/@vario-app-framework/frontend/script/index.js"></script>
+    <script defer type="module" src="script/demo.js"></script>
+    <script defer src="https://kit.fontawesome.com/c53a4a3a4f.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="node_modules/@vario-app-framework/frontend/style/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>VARIO Cloud-App-Example</title>
+  </head>
+  <body>
+
+    <div class="v-row">
+      <div class="v-col-5">
+        <div class="v-card">
+          <div class="v-head">
+            <div class="v-title">💻 Playground</div>
+              <div class="v-header text-grey" id="user"></div>
+          </div>
+          <div class="v-content v-no-padding v-pb-md">
+            <div class="v-row v-px-md">
+              <div class="v-col-6 ">
+                <button class="v-button" id="notification">
+                  <span class="v-icon fa-light fa-message-lines"></span>
+                  Notification
+                </button>
+              </div>
+              <div class="v-col-6 v-col-content-stretch">
+                <button class="v-button" id="simpleconfirm">
+                  <span class="v-icon fa-light fa-hexagon-check"></span>
+                  Simple Confirmation
+                </button>
+              </div>
+            </div>
+
+            <div class="v-row v-px-md v-mt-md">
+              <div class="v-col-6">
+                <button class="v-button" id="customconfirm">
+                  <span class="v-icon fa-light fa-hexagon-check"></span>
+                  Custom Confirmation
+                </button>
+              </div>
+              <div class="v-col-6">
+                <button class="v-button" id="formularconfirm">
+                  <span class="v-icon fa-light fa-hexagon-check"></span>
+                  Confirmation Formular
+                </button>
+              </div>
+            </div>
+
+            <div class="v-row v-px-md v-mt-md">
+              <div class="v-col-6">
+                <button class="v-button" id="dialog">
+                  <span class="v-icon fa-light fa-list-dropdown"></span>
+                  Open Dialog
+                </button>
+              </div>
+              <div class="v-col-6">
+                <button class="v-button">
+                  <span class="v-icon fa-regular fa-spinner-third fa-spin"></span>
+                  Loading State
+                </button>
+              </div>
+            </div>
+
+            <div class="v-row v-px-md v-mt-md">
+              <div class="v-col-6">
+                <button class="v-button" type="button" id="clipboard">
+                  <span class="v-icon fa-light fa-clipboard"></span>
+                  Copy to Clipboard
+                </button>
+              </div>
+
+              <div class="v-col-6">
+                <button class="v-button" type="button" id="clipboardread">
+                  <span class="v-icon fa-light fa-book-open"></span>
+                  Clipboard Read
+                </button>
+              </div>
+            </div>
+
+            <div class="v-row v-px-md v-mt-md">
+              <div class="v-col-6">
+                <button class="v-button" type="button" id="sensor-test">
+                  <span class="v-icon fa-light fa-mobile-notch"></span>
+                  Sensor-test
+                </button>
+              </div>
+              <div class="v-col-6">
+                <button class="v-button" type="button" id="newtab">
+                  <span class="v-icon fa-light fa-arrow-up-right-from-square"></span>
+                  Open new Tab
+                </button>
+              </div>
+            </div>
+
+            <div class="v-row v-px-md v-mt-md">
+              <div class="v-col-6">
+                <button class="v-button" type="button" id="fullscreen">
+                  <span class="v-icon fa-light fa-file-code"></span>
+                  Fullscreen
+                </button>
+              </div>
+              <div class="v-col-6">
+                <button class="v-button" type="button" id="update">
+                  <span class="v-icon fa-light fa-sync"></span>
+                  Update Components
+                </button>
+              </div>
+            </div>
+
+            <div class="v-row v-px-md v-mt-md">
+              <div class="v-col-6">
+                <button class="v-button" type="button" id="geolocation">
+                  <span class="v-icon fa-light fa-satellite-dish"></span>
+                  Geolocation
+                </button>
+              </div>
+              <div class="v-col-6">
+                <button class="v-button" type="button" id="microphone">
+                  <span class="v-icon fa-light fa-arrow-up-right-from-square"></span>
+                  Mikrofon
+                </button>
+              </div>
+            </div>
+
+            <div class="v-row v-px-md v-mt-md">
+              <div class="v-col-6">
+                <button class="v-button" type="button" id="share">
+                  <span class="v-icon fa-light fa-share"></i></span>
+                  Share
+                </button>
+              </div>
+              <div class="v-col-6">
+                <button class="v-button" type="button" id="camera">
+                  <span class="v-icon fa-light fa-camera"></span>
+                  Camera
+                </button>
+              </div>
+            </div>
+
+            <div class="v-row v-px-md v-mt-md">
+              <div class="v-col-6">
+                <button class="v-button" type="button" id="screen-share">
+                  <span class="v-icon fa-light fa-display"></span>
+                  Screen Share
+                </button>
+              </div>
+              <div class="v-col-6">
+                <button class="v-button" type="button" id="vr">
+                  <span class="v-icon fa-light fa-head-side-goggles"></span>
+                  Virtual Reality
+                </button>
+              </div>
+            </div>
+
+            <div class="v-row hidden v-mt-md" id="camera-preview">
+              <div class="v-col-grow"></div>
+                <video class="v-col-6"  autoplay controls></video>
+              <div class="v-col-grow"></div>
+            </div>
+
+            <hr class="v-hr" />
+
+            <div class="v-row v-row-md v-px-md">
+              <div class="v-col-grow">
+                <div class="v-input" id="activity">
+                  <div class="v-label">activity</div>
+                  <input value="" placeholder="Reviewed client feedback..." />
+                </div>
+              </div>
+              <div class="v-col-shrink v-col-vertical-center">
+                <div class="v-toggle" id="publish">
+                  <input id="published" type="checkbox" />
+                  <label for="published">publish</label>
+                </div>
+              </div>
+              <div class="v-col-shrink">
+                <button class="v-button v-icon-only" type="button" id="save-activity">
+                  <span class="v-icon fa-light fa-floppy-disk"></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="v-row">
+              <div class="v-col-grow"></div>
+              <div class="text-grey v-mr-md v-mt-lg">
+                Runs through <a href="#" class="v-link" id="scripting" style="opacity:0.7">App-Scripting</a>.
+                Ensure <a href="#" class="v-link" id="permission" style="opacity:0.7">Permission</a> granted.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="v-col-7">
+        <div class="v-card">
+          <div class="v-datagrid">
+            <div class="v-head">
+              <div class="v-input">
+                <div class="v-label v-stack">Activities</div>
+                <span class="v-icon fa-light fa-magnifying-glass"></span>
+                <input placeholder=" " />
+              </div>
+              <div class="v-header text-grey" id="company">
+              </div>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>User</th>
+                  <th>Type</th>
+                  <th>Comment</th>
+                  <th>Reference <a href="#" class="v-link text-white" id="webhook" style="opacity:0.7;">by Webhook</a></th>
+                  <th>Published</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+
+            <div class="v-foot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

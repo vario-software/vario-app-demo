@@ -1,0 +1,55 @@
+{
+  "appVersion": "1.0.0",
+  "label": "Demoapp",
+  "description": "Just a demo app",
+  "uniqueLicenseKey": "demoapp",
+  "privateApp": true,
+  "dedicatedApp": false,
+  "rootUrl": "https://app.example.com/",
+  "pcInstallationUrl": "https://app.example.com/ui/install.html",
+  "pcInstallationDeletionUrl": "https://app.example.com/ui/uninstall.html",
+  "pcManifestUrl": "https://app.example.com/manifest",
+  "requirements": {
+    "licenseKey": "app_demo_license_key",
+    "permissions": [
+      {
+        "resource": "crm-activity",
+        "verb": "read"
+      },
+      {
+        "resource": "crm-activity",
+        "verb": "create"
+      }
+    ]
+  },
+  "authorizationVerbs": [
+    {
+      "verb": "use-app",
+      "description": "Allowed to use the demo app"
+    },
+    {
+      "verb": "add-activity",
+      "description": "Allowed to add activities"
+    }
+  ],
+  "uiIntegrations": {
+    "integrations": [
+      {
+        "pointOfIntegration":"navigation.root",
+        "id":"demo-page",
+        "url":"https://app.example.com/ui/demo.html",
+        "iconClass":"fal fa-atom-simple",
+        "msgKey":"Demoapp",
+        "permissionKey": "use-app"
+      },
+      {
+        "id":"demo-dialog",
+        "url":"https://app.example.com/ui/demo-dialog.html"
+      },
+      {
+        "id":"demo-vr",
+        "url":"https://app.example.com/ui/demo-vr.html"
+      }
+    ]
+  }
+}
