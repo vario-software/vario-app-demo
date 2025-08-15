@@ -12,7 +12,7 @@
     "build": "node .bin/build"
   },
   "dependencies": {
-    "@vario-app-framework/backend": "2025.29.0-SNAPSHOT"
+    "@vario-app-framework/backend": "2025.29.0"
   },
   "imports": {
     "#backend/*": "./backend/*"
