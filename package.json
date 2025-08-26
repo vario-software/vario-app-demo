@@ -1,0 +1,24 @@
+{
+  "name": "vario-web-app-demo",
+  "version": "2025.29.0",
+  "repository": "https://github.com/vario-software/vario-app-demo",
+  "author": "VARIO Software AG",
+  "homepage": "https://www.vario.ag",
+  "description": "Demo app built with the VARIO App Framework and demonstrates how to develop and run a VARIO Cloud App using Node.js.",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "npm --prefix frontend install",
+    "dev": "node ./backend/index.js",
+    "build": "node .bin/build"
+  },
+  "dependencies": {
+    "@vario-app-framework/backend": "2025.29.0"
+  },
+  "imports": {
+    "#backend/*": "./backend/*"
+  },
+  "engines": {
+    "node": ">= 20.0.0",
+    "npm": ">= 10.0.0"
+  }
+}

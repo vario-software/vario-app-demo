@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="vario-cloud-ui-version" content="1.0.0" />
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+        }
+      }
+    </script>
+
+    <script defer type="module" src="script/demo-vr.js"></script>
+    <script defer src="https://kit.fontawesome.com/c53a4a3a4f.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="node_modules/@vario-app-framework/frontend/style/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+    </style>
+    <title>VARIO Cloud-App-Example</title>
+  </head>
+  <body>
+    <div class="v-row v-row-md" style="position:absolute; bottom:10%">
+      <div class="v-col-grow"></div>
+      <button class="v-button" id="openvr">
+        <span class="v-icon fa-light fa-head-side-goggles"></span>
+        Open VR
+      </button>
+    <div class="v-col-grow"></div>
+  </div>
+</body>
+</html>

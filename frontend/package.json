@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "dependencies": {
+    "@vario-app-framework/frontend": "2025.29.0"
+  }
+}
