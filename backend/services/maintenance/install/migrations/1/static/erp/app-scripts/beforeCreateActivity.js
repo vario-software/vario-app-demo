@@ -1,13 +1,12 @@
 import appScript from 'app_scripting_proxy';
 
-appScript.setProcess(ctx =>
+appScript.setProcess((ctx, jsonData) =>
 {
-  const { utils } = ctx.services;
-  const vql = ctx.services.vqlService;
+  const { logger, vqlService } = ctx.services;
 
-  const activity = ctx.jsonData;
+  const activity = jsonData;
 
-  const acitivityTypes = vql.queryAll(`
+  const acitivityTypes = vqlService.queryAll(`
         SELECT id, label
         FROM crm.activity-types
         WHERE active = 'true'
@@ -15,7 +14,9 @@ appScript.setProcess(ctx =>
         LIMIT 1
       `);
 
-  activity.type.id = String(acitivityTypes[0].id);
+  logger.info(acitivityTypes);
+
+  activity.type = { id: String(acitivityTypes[0].id) };
 
   const suffix = ' (scripted)';
 
