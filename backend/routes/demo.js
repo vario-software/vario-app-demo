@@ -1,4 +1,4 @@
-const { getExternalUserId } = require('@vario-app-framework/backend/utils/context.js');
+const { getExternalUserId, getRequestId } = require('@vario-app-framework/backend/utils/context.js');
 const { checkPermission } = require('@vario-app-framework/backend/utils/permission');
 
 function setup(app)
@@ -18,14 +18,13 @@ function setup(app)
       comment: req.body.comment,
       published: req.body.published,
       billingType: 'INTERNAL',
-      type: {},
       accountRef: { id: '1389132653974581248' },
       userRef: { id: getExternalUserId() },
       custom: { demoapp: { reference: '' } },
     };
 
     const { data: activityAfterScripting } = await app.erp.fetch(
-      `/community/latest/cmn/system/app-scripting-proxy/${app.client.appIdentifier}/beforeCreateActivity`,
+      `/community/latest/cmn/system/app-scripting-proxy/${app.client.appIdentifier}/beforeCreateActivity?sessionId=${getRequestId()}`,
       {
         useInternalApi: true,
         method: 'POST',
