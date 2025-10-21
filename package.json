@@ -1,6 +1,6 @@
 {
   "name": "@vario-software/vario-web-app-demo",
-  "version": "2025.37.0",
+  "version": "2025.38.0",
   "repository": "https://github.com/vario-software/vario-app-demo",
   "author": "VARIO Software AG",
   "homepage": "https://www.vario.ag",
@@ -13,7 +13,7 @@
     "build": "node .bin/build"
   },
   "dependencies": {
-    "@vario-software/vario-app-framework-backend": "2025.37.0"
+    "@vario-software/vario-app-framework-backend": "2025.38.0"
   },
   "imports": {
     "#backend/*": "./backend/*"
