@@ -1,4 +1,5 @@
 {
+  "version": "2025.38.0",
   "private": true,
   "dependencies": {
     "@vario-app-framework/frontend": "2025.34.0"
