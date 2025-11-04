@@ -1,4 +1,4 @@
-const { getApp, getTenant } = require('@vario-app-framework/backend/utils/context');
+const { getApp, getTenant } = require('@vario-software/vario-app-framework-backend/utils/context');
 
 const uninstall = async function()
 {

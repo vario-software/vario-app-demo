@@ -1,4 +1,4 @@
-import { getAppToken } from '../node_modules/@vario-app-framework/frontend/script/token.js';
+import { getAppToken } from '../node_modules/@vario-software/vario-app-framework-frontend/script/token.js';
 
 window.addEventListener('DOMContentLoaded', () =>
 {

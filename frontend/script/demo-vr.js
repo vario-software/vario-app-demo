@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 import { FontLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/geometries/TextGeometry.js';
-import { sendMain } from '../node_modules/@vario-app-framework/frontend/script/communication.js';
-import { additionalPayload } from '../node_modules/@vario-app-framework/frontend/script/parameters.js';
+import { sendMain } from '../node_modules/@vario-software/vario-app-framework-frontend/script/communication.js';
+import { additionalPayload } from '../node_modules/@vario-software/vario-app-framework-frontend/script/parameters.js';
 
 window.addEventListener('DOMContentLoaded', () =>
 {
@@ -76,7 +76,7 @@ window.addEventListener('DOMContentLoaded', () =>
   new FontLoader().load('https://threejs.org/examples/fonts/helvetiker_bold.typeface.json', font =>
   {
     // Haupttext
-    const geometry = new TextGeometry(additionalPayload.split(',')[0], { font, size: 0.8, height: 0.1 });
+    const geometry = new TextGeometry(additionalPayload, { font, size: 0.8, height: 0.1 });
     geometry.computeBoundingBox();
     geometry.center();
 

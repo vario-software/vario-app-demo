@@ -1,10 +1,10 @@
-import StickynavEditmode from '../node_modules/@vario-app-framework/frontend/script/stickynavEditmode.js';
-import StickynavButtons from '../node_modules/@vario-app-framework/frontend/script/stickynavButtons.js';
-import { getAppToken } from '../node_modules/@vario-app-framework/frontend/script/token.js';
-import { sendMain, receiveMain } from '../node_modules/@vario-app-framework/frontend/script/communication.js';
-import { confirm } from '../node_modules/@vario-app-framework/frontend/script/interaction.js';
-import { myCompanyId, appIdentifier } from '../node_modules/@vario-app-framework/frontend/script/parameters.js';
-import { hasPermission } from '../node_modules/@vario-app-framework/frontend/script/permission.js';
+import StickynavEditmode from '../node_modules/@vario-software/vario-app-framework-frontend/script/stickynavEditmode.js';
+import StickynavButtons from '../node_modules/@vario-software/vario-app-framework-frontend/script/stickynavButtons.js';
+import { getAppToken } from '../node_modules/@vario-software/vario-app-framework-frontend/script/token.js';
+import { sendMain, receiveMain } from '../node_modules/@vario-software/vario-app-framework-frontend/script/communication.js';
+import { confirm } from '../node_modules/@vario-software/vario-app-framework-frontend/script/interaction.js';
+import { myCompanyId, appIdentifier } from '../node_modules/@vario-software/vario-app-framework-frontend/script/parameters.js';
+import { hasPermission } from '../node_modules/@vario-software/vario-app-framework-frontend/script/permission.js';
 
 window.addEventListener('DOMContentLoaded', () =>
 {

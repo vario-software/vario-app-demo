@@ -1,5 +1,5 @@
-const { getExternalUserId, getRequestId } = require('@vario-app-framework/backend/utils/context.js');
-const { checkPermission } = require('@vario-app-framework/backend/utils/permission');
+const { getExternalUserId, getRequestId } = require('@vario-software/vario-app-framework-backend/utils/context.js');
+const { checkPermission } = require('@vario-software/vario-app-framework-backend/utils/permission');
 
 function setup(app)
 {
