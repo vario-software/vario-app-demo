@@ -1,7 +1,7 @@
 {
-  "version": "2025.42.0",
+  "version": "2025.43.0",
   "private": true,
   "dependencies": {
-    "@vario-software/vario-app-framework-frontend": "2025.42.0"
+    "@vario-software/vario-app-framework-frontend": "2025.43.0"
   }
 }

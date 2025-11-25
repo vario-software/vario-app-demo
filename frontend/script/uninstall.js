@@ -1,7 +1,8 @@
 import { getAppToken } from '../node_modules/@vario-software/vario-app-framework-frontend/script/token.js';
+import { uninstall } from '../node_modules/@vario-software/vario-app-framework-frontend/script/uninstall.js';
 
-window.addEventListener('DOMContentLoaded', () =>
-{
+window.addEventListener('DOMContentLoaded', () => 
+  {
   const iconClasses = document.querySelector('.v-icon').classList;
   const label = document.querySelector('#label');
 
@@ -12,23 +13,32 @@ window.addEventListener('DOMContentLoaded', () =>
       Authorization: `Bearer ${getAppToken()}`,
     },
   })
-    .then(response =>
-    {
-      if (response.status === 200)
+    .then(response => 
       {
-        iconClasses.remove('fa-spinner-third', 'fa-spin');
-        iconClasses.add('fa-circle-check');
-        label.innerText = 'App successfully uninstalled';
-      }
-      else
+      if (response.status === 200) {
+        uninstall()
+          .then(() => 
+          {
+            iconClasses.remove('fa-spinner-third', 'fa-spin');
+            iconClasses.add('fa-circle-check');
+            label.innerText = 'App successfully uninstalled';
+          })
+          .catch(() => 
+          {
+            iconClasses.remove('fa-spinner-third', 'fa-spin');
+            iconClasses.add('fa-circle-xmark');
+            label.innerText = 'Error during uninstall';
+          });
+      } 
+      else 
       {
         iconClasses.remove('fa-spinner-third', 'fa-spin');
         iconClasses.add('fa-circle-xmark');
         label.innerText = 'Error during uninstall';
       }
     })
-    .catch(() =>
-    {
+    .catch(() => 
+      {
       iconClasses.remove('fa-spinner-third', 'fa-spin');
       iconClasses.add('fa-circle-xmark');
       label.innerText = 'Error during uninstall';
