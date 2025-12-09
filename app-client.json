@@ -1,6 +1,7 @@
 {
   "appIdentifier": "",
   "clientId": "",
-  "clientSecret": ""
+  "clientSecret": "",
+  "appJWK": ""
 }
 
