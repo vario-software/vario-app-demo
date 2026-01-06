@@ -1,5 +1,5 @@
 import { getAppToken } from '../node_modules/@vario-software/vario-app-framework-frontend/script/token.js';
-import { uninstall } from '../node_modules/@vario-software/vario-app-framework-frontend/script/uninstall.js';
+import { uninstallFromErp } from '../node_modules/@vario-software/vario-app-framework-frontend/script/uninstall.js';
 
 window.addEventListener('DOMContentLoaded', () => 
   {
@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () =>
     .then(response => 
       {
       if (response.status === 200) {
-        uninstall()
+        uninstallFromErp()
           .then(() => 
           {
             iconClasses.remove('fa-spinner-third', 'fa-spin');

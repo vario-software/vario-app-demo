@@ -12,14 +12,14 @@
   "requirements": {
     "licenseKey": "app_demo_license_key",
     "permissions": [
-      {
-        "resource": "crm-activity",
-        "verb": "read"
-      },
-      {
-        "resource": "crm-activity",
-        "verb": "create"
-      }
+      { "resource": "eav", "verb": "read" },
+      { "resource": "eav", "verb": "create" },
+      { "resource": "eav", "verb": "update" },
+      { "resource": "eav", "verb": "delete" },
+      { "resource": "app-scripting-proxy", "verb": "read" },
+      { "resource": "app-scripting-proxy", "verb": "create" },
+      { "resource": "app-scripting-proxy", "verb": "update" },
+      { "resource": "app-scripting-proxy", "verb": "delete" }
     ]
   },
   "authorizationVerbs": [
