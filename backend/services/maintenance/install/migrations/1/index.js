@@ -6,11 +6,12 @@ const eavGroupDemoapp = require('./static/erp/eav-groups/demoapp.json');
 
 const handle = async function()
 {
+
   const migratorErp = new MigratorErp('migration1');
 
   await migratorErp.setMigration('createEavStructure', createEavStructure);
   await migratorErp.setMigration('createWebhook', createWebhook);
-  await migratorErp.setMigration('createScript', createScript);
+  await migratorErp.always('updateScript', updateScript);
 };
 
 async function createEavStructure(methods)
@@ -27,7 +28,7 @@ async function createWebhook(methods)
   // );
 }
 
-async function createScript(methods)
+async function updateScript(methods)
 {
   const script = fs.readFileSync(path.join(__dirname, 'static/erp/app-scripts/beforeCreateActivity.js'), 'utf-8');
 

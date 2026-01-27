@@ -5,20 +5,20 @@ function setup(app)
 {
   app.apiServer.get('/me', async () =>
   {
-    app.erp.gateway('/cmn/users/me', {
-      useInternalApi: true,
-    });
+    app.erp.gateway('/cmn/users/me', { useInternalApi: true });
   });
 
   app.apiServer.post('/activity', async (req, res) =>
   {
     await checkPermission('add-activity');
 
+    const { data: me } = await app.erp.fetch(`/cmn/users/me`, {useInternalApi: true});
+
     const activity = {
       comment: req.body.comment,
       published: req.body.published,
       billingType: 'INTERNAL',
-      accountRef: { id: '1389132653974581248' },
+      accountRef: { id: me.company.id },
       userRef: { id: getExternalUserId() },
       custom: { demoapp: { reference: '' } },
     };
@@ -60,8 +60,9 @@ function setup(app)
           --v:result{displayname='reference'}
           custom.demoapp.reference
         FROM crm.activities
+       WHERE relations.account.accountTypes IN ('COMPANY')
       ${req.query.keyword ? `
-        WHERE comment LIKE '%${req.query.keyword}%'
+         AND comment LIKE '%${req.query.keyword}%'
       ` : ''}
         ORDER BY startDateTime desc
         LIMIT 20

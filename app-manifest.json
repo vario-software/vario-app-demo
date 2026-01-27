@@ -2,15 +2,12 @@
   "appVersion": "1.0.0",
   "label": "Demoapp",
   "description": "Just a demo app",
-  "uniqueLicenseKey": "demoapp",
-  "privateApp": true,
-  "dedicatedApp": false,
+  "shortName": "demoapp",
   "rootUrl": "https://app.example.com/",
   "pcInstallationUrl": "https://app.example.com/ui/install.html",
   "pcInstallationDeletionUrl": "https://app.example.com/ui/uninstall.html",
   "pcManifestUrl": "https://app.example.com/manifest",
   "requirements": {
-    "licenseKey": "app_demo_license_key",
     "permissions": [
       { "resource": "eav", "verb": "read" },
       { "resource": "eav", "verb": "create" },
@@ -19,7 +16,8 @@
       { "resource": "app-scripting-proxy", "verb": "read" },
       { "resource": "app-scripting-proxy", "verb": "create" },
       { "resource": "app-scripting-proxy", "verb": "update" },
-      { "resource": "app-scripting-proxy", "verb": "delete" }
+      { "resource": "app-scripting-proxy", "verb": "delete" },
+      { "resource": "app-scripting-proxy", "verb": "execute" }
     ]
   },
   "authorizationVerbs": [
@@ -49,6 +47,11 @@
       {
         "id":"demo-vr",
         "url":"https://app.example.com/ui/demo-vr.html"
+      },
+      {
+        "id": "system.refresh-install",
+        "pointOfIntegration": "api",
+        "url": "https://app.example.com/api/install"
       }
     ]
   }

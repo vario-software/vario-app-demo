@@ -26,8 +26,24 @@
               <div class="v-header text-grey" id="user"></div>
           </div>
           <div class="v-content v-no-padding v-pb-md">
+
             <div class="v-row v-px-md">
-              <div class="v-col-6 ">
+              <div class="v-col-6">
+                <button class="v-button">
+                  <span class="v-icon fa-regular fa-spinner-third fa-spin"></span>
+                  Loading State
+                </button>
+              </div>
+              <div class="v-col-6">
+                <button  class="v-button" type="button" disabled>
+                  <span class="v-icon fa-light fa-ban"></span>
+                  Disabled State
+                </button>
+              </div>
+            </div>
+
+            <div class="v-row v-px-md v-mt-md">
+              <div class="v-col-6">
                 <button class="v-button" id="notification">
                   <span class="v-icon fa-light fa-message-lines"></span>
                   Notification
@@ -64,9 +80,9 @@
                 </button>
               </div>
               <div class="v-col-6">
-                <button class="v-button">
-                  <span class="v-icon fa-regular fa-spinner-third fa-spin"></span>
-                  Loading State
+                <button class="v-button" type="button" id="searchdialog">
+                  <span class="v-icon fa-light fa-magnifying-glass"></span>
+                  Search Dialog
                 </button>
               </div>
             </div>

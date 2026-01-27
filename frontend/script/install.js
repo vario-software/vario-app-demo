@@ -1,4 +1,5 @@
 import { getAppToken } from '../node_modules/@vario-software/vario-app-framework-frontend/script/token.js';
+import { sendMain } from '../node_modules/@vario-software/vario-app-framework-frontend/script/communication.js';
 
 window.addEventListener('DOMContentLoaded', () =>
 {
@@ -37,5 +38,9 @@ window.addEventListener('DOMContentLoaded', () =>
       iconClasses.remove('fa-spinner-third', 'fa-spin');
       iconClasses.add('fa-circle-xmark');
       label.innerText = 'Error during install';
+    })
+    .finally(() =>
+    {
+      sendMain({ installationComplete: true });
     });
 });

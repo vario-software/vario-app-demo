@@ -10,6 +10,7 @@ appScript.setProcess((ctx, jsonData) =>
         SELECT id, label
         FROM crm.activity-types
         WHERE active = 'true'
+          AND possibleUsingTypes IN ('ACCOUNT')
         ORDER BY sortOrder asc
         LIMIT 1
       `);

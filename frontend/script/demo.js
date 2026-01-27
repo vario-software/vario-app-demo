@@ -26,6 +26,7 @@ window.addEventListener('DOMContentLoaded', () =>
   setupFormularConfirmButton();
   setupNewTabButton();
   setupUpdateButton();
+  setupSearchDialogButtons();
   setupClipboardButton();
   setupFullscreenButton();
   setupClipboardReadButton();
@@ -284,6 +285,37 @@ function setupClipboardButton()
     copyToClipboard: 'Hello World!',
   }),
   );
+}
+
+function setupSearchDialogButtons()
+{
+  document.querySelector('.v-button#searchdialog').addEventListener('click', () => sendMain({
+    searchDialog: {
+      key: 'my-articles-select',
+      search: 'ARTICLE',
+      result: 'NUMBER',
+      multiple: true,
+    },
+  }));
+
+  receiveMain({
+    'searchDialog-my-articles-select': ({selected}) =>{
+      sendMain({
+        notify: {
+          message: `Selected articles: ${JSON.parse(selected)}`,
+          icon: 'fal fa-cubes',
+        },
+      });
+        sendMain({
+        notify: {
+          type: 'info',
+          timeout: 10000,
+          progress: true,
+          message: `Entities available: ACCOUNT, ARTICLE, DOCUMENT, USER, CRM_DEAL and more ...`,
+        },
+      });
+    }
+  });
 }
 
 function setupFullscreenButton()
