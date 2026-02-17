@@ -1,48 +1,49 @@
-const { getExternalUserId, getRequestId } = require('@vario-software/vario-app-framework-backend/utils/context.js');
-const { checkPermission } = require('@vario-software/vario-app-framework-backend/utils/permission');
+const {
+  getExternalUserId,
+  getRequestId,
+} = require("@vario-software/vario-app-framework-backend/utils/context.js");
+const {
+  checkPermission,
+} = require("@vario-software/vario-app-framework-backend/utils/permission");
 
-function setup(app)
-{
-  app.apiServer.get('/me', async () =>
-  {
-    app.erp.gateway('/cmn/users/me', { useInternalApi: true });
+function setup(app) {
+  app.apiServer.get("/me", async () => {
+    app.erp.gateway("/cmn/users/me");
   });
 
-  app.apiServer.post('/activity', async (req, res) =>
-  {
-    await checkPermission('add-activity');
+  app.apiServer.post("/activity", async (req, res) => {
+    await checkPermission("add-activity");
 
-    const { data: me } = await app.erp.fetch(`/cmn/users/me`, {useInternalApi: true});
+    const { data: me } = await app.erp.fetch(`/cmn/users/me`);
 
     const activity = {
       comment: req.body.comment,
       published: req.body.published,
-      billingType: 'INTERNAL',
+      billingType: "INTERNAL",
       accountRef: { id: me.company.id },
       userRef: { id: getExternalUserId() },
-      custom: { demoapp: { reference: '' } },
+      custom: { demoapp: { reference: "" } },
     };
 
     const { data: activityAfterScripting } = await app.erp.fetch(
-      `/community/latest/cmn/system/app-scripting-proxy/${app.client.appIdentifier}/beforeCreateActivity?sessionId=${getRequestId()}`,
+      `/community/${app.version}/cmn/system/app-scripting-proxy/${app.client.appIdentifier}/beforeCreateActivity?sessionId=${getRequestId()}`,
       {
-        useInternalApi: true,
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify(activity),
-      });
+      },
+    );
 
-    await app.erp.fetch('/erp/crm-activities', {
-      method: 'POST',
-      useInternalApi: true,
-      body: activityAfterScripting,
-    }).then(({ data }) =>
-    {
-      res.send(data).end();
-    });
+    await app.erp
+      .fetch("/erp/crm-activities", {
+        method: "POST",
+        body: activityAfterScripting,
+      })
+      .then(({ data }) => {
+        res.send(data).end();
+      });
   });
 
-  app.apiServer.get('/own-company-activities', async (req, res) =>
-  {
+  app.apiServer.get("/own-company-activities", async (req, res) => {
     const { data: activities } = await app.erp.vql({
       statement: `
         SELECT 
@@ -61,9 +62,13 @@ function setup(app)
           custom.demoapp.reference
         FROM crm.activities
        WHERE relations.account.accountTypes IN ('COMPANY')
-      ${req.query.keyword ? `
+      ${
+        req.query.keyword
+          ? `
          AND comment LIKE '%${req.query.keyword}%'
-      ` : ''}
+      `
+          : ""
+      }
         ORDER BY startDateTime desc
         LIMIT 20
         `,
