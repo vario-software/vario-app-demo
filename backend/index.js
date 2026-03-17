@@ -3,7 +3,6 @@ const VarioCloudApp = require('@vario-software/vario-app-framework-backend/app.j
 const setupMaintenanceRoutes = require('#backend/routes/maintenance.js');
 const setupDemoRoutes = require('#backend/routes/demo.js');
 const setupWebhookRoutes = require('#backend/routes/webhook.js');
-
 const client = require('../app-client.js');
 
 const app = new VarioCloudApp(client);

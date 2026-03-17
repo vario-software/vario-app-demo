@@ -5,6 +5,7 @@ const {
 const {
   checkPermission,
 } = require("@vario-software/vario-app-framework-backend/utils/permission");
+const runDemoImport = require('#backend/services/import/import.js');
 
 function setup(app) {
   app.apiServer.get("/me", async () => {
@@ -41,6 +42,11 @@ function setup(app) {
       .then(({ data }) => {
         res.send(data).end();
       });
+  });
+
+  app.apiServer.post("/import-demo", async (req, res) => {
+    const result = await runDemoImport();
+    res.send(result).end();
   });
 
   app.apiServer.get("/own-company-activities", async (req, res) => {

@@ -1,0 +1,5 @@
+[
+  { "comment": "Erstgespräch Einkauf", "durationInSeconds": 3600, "accountName": "Mustermann GmbH" },
+  { "comment": "IT-Systemanalyse", "durationInSeconds": 1800, "accountName": "Beispiel AG" },
+  { "comment": "Angebot besprochen", "durationInSeconds": 2700, "accountName": "Demo & Partner" }
+]

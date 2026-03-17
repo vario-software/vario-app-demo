@@ -16,6 +16,7 @@ window.addEventListener('DOMContentLoaded', () =>
 
   setupEditmode();
   setupDemoActionButton();
+  setupImportDemoButton();
   setupBacklinkButton();
 
   setupFullscreenButton();
@@ -43,6 +44,7 @@ window.addEventListener('DOMContentLoaded', () =>
 
 let me;
 let fetchActivities;
+const stickynavButtons = new StickynavButtons();
 
 const getAuthHeaders = () => ({
   'Content-Type': 'application/json',
@@ -111,8 +113,6 @@ function setupEditmode()
 
 function setupDemoActionButton()
 {
-  const stickynavButtons = new StickynavButtons();
-
   stickynavButtons.add({
     key: 'demoaction',
     icon: 'fal fa-stars',
@@ -125,6 +125,69 @@ function setupDemoActionButton()
         message: '🥷 Demo action button clicked',
       },
     }),
+  });
+
+}
+
+function setupImportDemoButton()
+{
+  stickynavButtons.add({
+    key: 'importdemo',
+    icon: 'fal fa-cloud-arrow-up',
+    label: 'Import Demo',
+  });
+
+  receiveMain({
+    'button-importdemo': () =>
+    {
+      confirm({
+        title: 'Start Demo Import?',
+        message: 'Creates a Multipart-Script-Import, streams a ZIP via DMS, imports 3 accounts and 3 linked activities.',
+        buttons: [
+          { label: 'Cancel', key: 'cancel' },
+          { label: '🚀 Start import', key: 'import' },
+        ],
+      }, async action =>
+      {
+        if (action==='cancel') return;
+
+        stickynavButtons.toggleLoading('importdemo');
+
+        sendMain({
+          notify: {
+            message: 'Import is running...',
+            icon: 'fal fa-cloud-arrow-up',
+            progress: true,
+            timeout: 10000,
+          },
+        });
+
+        try
+        {
+          const response = await fetch('/api/import-demo', {
+            method: 'POST',
+            headers: getAuthHeaders(),
+          });
+
+          if (!response.ok) throw new Error(`Status ${response.status}`);
+
+          const result = await response.json();
+
+          sendMain({
+            notify: {
+              type: 'positive',
+              message: `Import completed`,
+              icon: 'fal fa-check',
+              route: `/system/imports/multi/${result.multiPartImportId}`,
+            },
+          });
+        }
+        finally
+        {
+          stickynavButtons.toggleLoading('importdemo');
+        }
+      });
+    },
   });
 }
 
