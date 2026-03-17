@@ -17,9 +17,8 @@
     <title>VARIO Cloud-App-Example</title>
   </head>
   <body>
-
-    <div class="v-row">
-      <div class="v-col-5">
+    <div class="v-row v-row-lg">
+      <div class="v-col-12 v-col-md-5 v-col-lg-6">
         <div class="v-card">
           <div class="v-head">
             <div class="v-title">💻 Playground</div>
@@ -28,149 +27,139 @@
           <div class="v-content v-no-padding v-pb-md">
 
             <div class="v-row v-px-md">
-              <div class="v-col-6">
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
                 <button class="v-button">
                   <span class="v-icon fa-regular fa-spinner-third fa-spin"></span>
                   Loading State
                 </button>
               </div>
-              <div class="v-col-6">
-                <button  class="v-button" type="button" disabled>
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" type="button" disabled>
                   <span class="v-icon fa-light fa-ban"></span>
                   Disabled State
                 </button>
               </div>
-            </div>
-
-            <div class="v-row v-px-md v-mt-md">
-              <div class="v-col-6">
-                <button class="v-button" id="notification">
-                  <span class="v-icon fa-light fa-message-lines"></span>
-                  Notification
-                </button>
-              </div>
-              <div class="v-col-6 v-col-content-stretch">
-                <button class="v-button" id="simpleconfirm">
-                  <span class="v-icon fa-light fa-hexagon-check"></span>
-                  Simple Confirmation
-                </button>
-              </div>
-            </div>
-
-            <div class="v-row v-px-md v-mt-md">
-              <div class="v-col-6">
-                <button class="v-button" id="customconfirm">
-                  <span class="v-icon fa-light fa-hexagon-check"></span>
-                  Custom Confirmation
-                </button>
-              </div>
-              <div class="v-col-6">
-                <button class="v-button" id="formularconfirm">
-                  <span class="v-icon fa-light fa-hexagon-check"></span>
-                  Confirmation Formular
-                </button>
-              </div>
-            </div>
-
-            <div class="v-row v-px-md v-mt-md">
-              <div class="v-col-6">
-                <button class="v-button" id="dialog">
-                  <span class="v-icon fa-light fa-list-dropdown"></span>
-                  Open Dialog
-                </button>
-              </div>
-              <div class="v-col-6">
-                <button class="v-button" type="button" id="searchdialog">
-                  <span class="v-icon fa-light fa-magnifying-glass"></span>
-                  Search Dialog
-                </button>
-              </div>
-            </div>
-
-            <div class="v-row v-px-md v-mt-md">
-              <div class="v-col-6">
-                <button class="v-button" type="button" id="clipboard">
-                  <span class="v-icon fa-light fa-clipboard"></span>
-                  Copy to Clipboard
-                </button>
-              </div>
-
-              <div class="v-col-6">
-                <button class="v-button" type="button" id="clipboardread">
-                  <span class="v-icon fa-light fa-book-open"></span>
-                  Clipboard Read
-                </button>
-              </div>
-            </div>
-
-            <div class="v-row v-px-md v-mt-md">
-              <div class="v-col-6">
-                <button class="v-button" type="button" id="sensor-test">
-                  <span class="v-icon fa-light fa-mobile-notch"></span>
-                  Sensor-test
-                </button>
-              </div>
-              <div class="v-col-6">
-                <button class="v-button" type="button" id="newtab">
-                  <span class="v-icon fa-light fa-arrow-up-right-from-square"></span>
-                  Open new Tab
-                </button>
-              </div>
-            </div>
-
-            <div class="v-row v-px-md v-mt-md">
-              <div class="v-col-6">
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
                 <button class="v-button" type="button" id="fullscreen">
                   <span class="v-icon fa-light fa-file-code"></span>
                   Fullscreen
                 </button>
               </div>
-              <div class="v-col-6">
-                <button class="v-button" type="button" id="update">
-                  <span class="v-icon fa-light fa-sync"></span>
-                  Update Components
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" id="notification">
+                  <span class="v-icon fa-light fa-message-lines"></span>
+                  Notification
                 </button>
               </div>
-            </div>
-
-            <div class="v-row v-px-md v-mt-md">
-              <div class="v-col-6">
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" id="dialog">
+                  <span class="v-icon fa-light fa-list-dropdown"></span>
+                  Custom Dialog
+                </button>
+              </div>
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" type="button" id="searchdialog">
+                  <span class="v-icon fa-light fa-magnifying-glass"></span>
+                  Search Dialog
+                </button>
+              </div>
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" id="simpleconfirm">
+                  <span class="v-icon fa-light fa-hexagon-check"></span>
+                  Simple Confirm
+                </button>
+              </div>
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" id="customconfirm">
+                  <span class="v-icon fa-light fa-hexagon-check"></span>
+                  Custom Confirm
+                </button>
+              </div>
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" id="formularconfirm">
+                  <span class="v-icon fa-light fa-hexagon-check"></span>
+                  Form Confirm
+                </button>
+              </div>
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" type="button" id="clipboard">
+                  <span class="v-icon fa-light fa-clipboard"></span>
+                  Clipboard Write
+                </button>
+              </div>
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" type="button" id="clipboardread">
+                  <span class="v-icon fa-light fa-book-open"></span>
+                  Clipboard Read
+                </button>
+              </div>
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" type="button" id="newtab">
+                  <span class="v-icon fa-light fa-arrow-up-right-from-square"></span>
+                  Open new Tab
+                </button>
+              </div>
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" type="button" id="sensor-test">
+                  <span class="v-icon fa-light fa-mobile-notch"></span>
+                  Sensor-test
+                </button>
+              </div>
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
                 <button class="v-button" type="button" id="geolocation">
                   <span class="v-icon fa-light fa-satellite-dish"></span>
                   Geolocation
                 </button>
               </div>
-              <div class="v-col-6">
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" type="button" id="update">
+                  <span class="v-icon fa-light fa-sync"></span>
+                  Update
+                </button>
+              </div>
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" type="button" id="documenttitle">
+                  <span class="v-icon fa-light fa-heading"></span>
+                  Document Title
+                </button>
+              </div>
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" type="button" id="cron">
+                  <span class="v-icon fa-light fa-clock"></span>
+                  Cron-Ausdruck
+                </button>
+              </div>
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" type="button" id="datepicker">
+                  <span class="v-icon fa-light fa-calendar"></span>
+                  Datepicker
+                </button>
+              </div>
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
+                <button class="v-button" type="button" id="share">
+                  <span class="v-icon fa-light fa-share"></span>
+                  Share
+                </button>
+              </div>
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
                 <button class="v-button" type="button" id="microphone">
                   <span class="v-icon fa-light fa-arrow-up-right-from-square"></span>
                   Mikrofon
                 </button>
               </div>
-            </div>
-
-            <div class="v-row v-px-md v-mt-md">
-              <div class="v-col-6">
-                <button class="v-button" type="button" id="share">
-                  <span class="v-icon fa-light fa-share"></i></span>
-                  Share
-                </button>
-              </div>
-              <div class="v-col-6">
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
                 <button class="v-button" type="button" id="camera">
                   <span class="v-icon fa-light fa-camera"></span>
                   Camera
                 </button>
               </div>
-            </div>
-
-            <div class="v-row v-px-md v-mt-md">
-              <div class="v-col-6">
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
                 <button class="v-button" type="button" id="screen-share">
                   <span class="v-icon fa-light fa-display"></span>
                   Screen Share
                 </button>
               </div>
-              <div class="v-col-6">
+              <div class="v-col-4 v-col-md-6 v-col-lg-4">
                 <button class="v-button" type="button" id="vr">
                   <span class="v-icon fa-light fa-head-side-goggles"></span>
                   Virtual Reality
@@ -217,7 +206,7 @@
         </div>
       </div>
 
-      <div class="v-col-7">
+      <div class="v-col-12 v-col-md-7 v-col-lg-6">
         <div class="v-card">
           <div class="v-datagrid">
             <div class="v-head">

@@ -1,15 +1,14 @@
 const path = require('path');
 const VarioCloudApp = require('@vario-software/vario-app-framework-backend/app.js');
-const ErpApi = require('@vario-software/vario-app-framework-backend/api/ErpApi');
 const setupMaintenanceRoutes = require('#backend/routes/maintenance.js');
 const setupDemoRoutes = require('#backend/routes/demo.js');
 const setupWebhookRoutes = require('#backend/routes/webhook.js');
 
-const client = require('../app-client.json');
+const client = require('../app-client.js');
 
 const app = new VarioCloudApp(client);
 
-app.port = 443;
+app.port = 8443;
 
 app.uiPath = path.resolve(__dirname, '../frontend');
 

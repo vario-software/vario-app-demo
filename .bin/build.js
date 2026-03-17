@@ -12,7 +12,7 @@ if (existsSync(dist))
 cpSync(path.resolve(__dirname, '../node_modules'), path.resolve(dist, './node_modules'), { recursive: true });
 cpSync(path.resolve(__dirname, '../backend'), path.resolve(dist, './backend'), { recursive: true });
 cpSync(path.resolve(__dirname, '../frontend'), path.resolve(dist, './frontend'), { recursive: true });
-cpSync(path.resolve(__dirname, '../app-client.json'), path.resolve(dist, './app-client.json'), { recursive: true });
+cpSync(path.resolve(__dirname, '../app-client.js'), path.resolve(dist, './app-client.js'), { recursive: true });
 cpSync(path.resolve(__dirname, '../app-manifest.json'), path.resolve(dist, './app-manifest.json'), { recursive: true });
 
 delete packageJson.repository;

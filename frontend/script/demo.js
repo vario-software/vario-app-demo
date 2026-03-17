@@ -18,24 +18,27 @@ window.addEventListener('DOMContentLoaded', () =>
   setupDemoActionButton();
   setupBacklinkButton();
 
-  setupDialogButton();
+  setupFullscreenButton();
   setupNotificationButton();
-  setupVrButton();
+  setupDialogButton();
+  setupSearchDialogButtons();
   setupSimpleConfirmButton();
   setupCustomConfirmButton();
   setupFormularConfirmButton();
-  setupNewTabButton();
-  setupUpdateButton();
-  setupSearchDialogButtons();
   setupClipboardButton();
-  setupFullscreenButton();
   setupClipboardReadButton();
+  setupNewTabButton();
+  setupSensorTestButton();
   setupGeolocationButton();
+  setupUpdateButton();
+  setupDocumentTitleButton();
+  setupCronButton();
+  setupDatepickerButton();
+  setupShareButton();
   setupMicrophoneButton();
   setupCameraButton();
   setupScreenShareButton();
-  setupShareButton();
-  setupSensorTestButton();
+  setupVrButton();
 });
 
 let me;
@@ -482,6 +485,80 @@ function setupSensorTestButton()
     };
 
     window.addEventListener('devicemotion', handler);
+  });
+}
+
+function setupCronButton()
+{
+  document.querySelector('.v-button#cron').addEventListener('click', () => sendMain({
+    cron: {
+      title: 'Backup Schedule',
+      initialValue: '0 3 * * 1-5',
+      schemaPath: 'settings.backup.schedule',
+      showPresets: true,
+      dayMode: false,
+      key: 'backup-schedule',
+    },
+  }));
+
+  receiveMain({
+    'cron-backup-schedule': (value) =>
+    {
+      sendMain({
+        notify: {
+          message: `Cron-Ausdruck: ${JSON.parse(value).value}`,
+          icon: 'fal fa-clock',
+          timeout: 6000,
+        },
+      });
+    },
+  });
+}
+
+function setupDatepickerButton()
+{
+  document.querySelector('.v-button#datepicker').addEventListener('click', () => sendMain({
+    datepicker: {
+      title: 'Delivery-Date',
+      initialValue: new Date().toISOString().split('T')[0],
+      initialValueTo: null,
+      time: false,
+      range: false,
+      navigationMinYearMonth: '2026/01',
+      navigationMaxYearMonth: '2026/12',
+      key: 'delivery-period',
+    },
+  }));
+
+  receiveMain({
+    'datepicker-delivery-period': (value) =>
+    {
+      sendMain({
+        notify: {
+          message: `Date: ${JSON.parse(value).date}`,
+          icon: 'fal fa-calendar',
+          timeout: 6000,
+        },
+      });
+    },
+  });
+}
+
+function setupDocumentTitleButton()
+{
+  document.querySelector('.v-button#documenttitle').addEventListener('click', () =>
+  {
+    const title = `Demo at ${new Date().toLocaleTimeString()}`;
+
+    sendMain({ documentTitle: title });
+
+    sendMain({
+      notify: {
+        message: `New Title: "${title}"`,
+        icon: 'fal fa-heading',
+        timeout: 3000,
+      },
+    });
   });
 }
 

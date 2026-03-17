@@ -113,12 +113,12 @@ window.addEventListener('DOMContentLoaded', () =>
     renderer.setAnimationLoop(() =>
     {
       mesh.position.y = renderer.xr.isPresenting ? 1.6 : 0;
-      mesh.rotation.y += 0.01;
+      mesh.rotation.y += 0.005;
 
       // Matrix-Zahlen fallen lassen
       digitMeshes.forEach(digit =>
       {
-        digit.position.y -= 0.02;
+        digit.position.y -= 0.01;
 
         if (digit.position.y < -2)
         {
