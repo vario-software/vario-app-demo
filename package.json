@@ -1,6 +1,6 @@
 {
   "name": "@vario-software/vario-web-app-demo",
-  "version": "2026.13.1",
+  "version": "2026.13.2",
   "repository": "https://github.com/vario-software/vario-app-demo",
   "author": "VARIO Software AG",
   "homepage": "https://www.vario.ag",
@@ -14,8 +14,11 @@
     "dev": "node ./backend/index.js",
     "build": "node .bin/build"
   },
+  "devDependencies": {
+    "@vario-software/types": "2026.13.2"
+  },
   "dependencies": {
-    "@vario-software/vario-app-framework-backend": "2026.13.1",
+    "@vario-software/vario-app-framework-backend": "2026.13.2",
     "archiver": "^7.0.1"
   },
   "imports": {
