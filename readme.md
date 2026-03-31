@@ -2,6 +2,5 @@
 
 This is a demo app built with the [VARIO App Framework](https://github.com/vario-software/vario-app-framework) and demonstrates how to develop and run a VARIO Cloud App using Node.js.
 
-For more information about VARIO and our ERP system, visit [www.vario.ag](https://www.vario.ag).
 
-Documentation and setup guides are coming soon.
+For more information about VARIO and our ERP system, visit [www.vario.ag](https://www.vario.ag). For developer resources, see our [Developer Documentation](https://developer.vario-software.de/).
