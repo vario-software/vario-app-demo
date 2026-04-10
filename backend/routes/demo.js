@@ -1,0 +1,87 @@
+const {
+  getExternalUserId,
+  getRequestId,
+} = require("@vario-software/vario-app-framework-backend/utils/context.js");
+const {
+  checkPermission,
+} = require("@vario-software/vario-app-framework-backend/utils/permission");
+const runDemoImport = require('#backend/services/import/import.js');
+
+function setup(app) {
+  app.apiServer.get("/me", async () => {
+    app.erp.gateway("/cmn/users/me");
+  });
+
+  app.apiServer.post("/activity", async (req, res) => {
+    await checkPermission("add-activity");
+
+    const { data: me } = await app.erp.fetch(`/cmn/users/me`);
+
+    const activity = {
+      comment: req.body.comment,
+      published: req.body.published,
+      billingType: "INTERNAL",
+      accountRef: { id: me.company.id },
+      userRef: { id: getExternalUserId() },
+      custom: { demoapp: { reference: "" } },
+    };
+
+    const { data: activityAfterScripting } = await app.erp.fetch(
+      `/community/${app.version}/cmn/system/app-scripting-proxy/${app.client.appIdentifier}/beforeCreateActivity?sessionId=${getRequestId()}`,
+      {
+        method: "POST",
+        body: JSON.stringify(activity),
+      },
+    );
+
+    await app.erp
+      .fetch("/erp/crm-activities", {
+        method: "POST",
+        body: activityAfterScripting,
+      })
+      .then(({ data }) => {
+        res.send(data).end();
+      });
+  });
+
+  app.apiServer.post("/import-demo", async (req, res) => {
+    const result = await runDemoImport();
+    res.send(result).end();
+  });
+
+  app.apiServer.get("/own-company-activities", async (req, res) => {
+    const { data: activities } = await app.erp.vql({
+      statement: `
+        SELECT 
+          id,
+          --v:result{displayname='startDateTime'}
+          startDateTime,
+          --v:result{displayname='username'}
+          user.username,
+          --v:result{displayname='type'}
+          type.label,
+          --v:result{displayname='comment'}
+          comment,
+          --v:result{displayname='published'}
+          published,
+          --v:result{displayname='reference'}
+          custom.demoapp.reference
+        FROM crm.activities
+       WHERE relations.account.accountTypes IN ('COMPANY')
+      ${
+        req.query.keyword
+          ? `
+         AND comment LIKE '%${req.query.keyword}%'
+      `
+          : ""
+      }
+        ORDER BY startDateTime desc
+        LIMIT 20
+        `,
+    });
+
+    res.send(activities).end();
+  });
+}
+
+module.exports = setup;

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "checkJs": true,
+    "types": ["@vario-software/types"],
+    "paths": {
+        "#backend/*": ["backend/*"]
+    }
+  },
+  "include":[
+    "backend/**/*"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/.dist"
+  ]
+}

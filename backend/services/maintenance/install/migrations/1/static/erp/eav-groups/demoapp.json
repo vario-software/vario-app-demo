@@ -1,0 +1,22 @@
+{
+  "key": "demoapp",
+  "label": "Demoapp",
+  "description": "Demoapp",
+  "attributes": [
+      {
+          "key": "reference",
+          "label": "Reference",
+          "description": "External Reference",
+          "position": 1,
+          "type": "TEXT",
+          "viewMode": "EDITABLE",
+          "active": true,
+          "fulltextField": true,
+          "searchIndex": true
+      }
+  ],
+  "uiSettings": {},
+  "entities": [
+      "crmActivity"
+  ]
+}

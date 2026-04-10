@@ -1,0 +1,5 @@
+[
+  { "comment": "Initial purchasing meeting", "durationInSeconds": 3600, "accountName": "Acme Corp" },
+  { "comment": "IT system analysis", "durationInSeconds": 1800, "accountName": "Globex Inc" },
+  { "comment": "Proposal review", "durationInSeconds": 2700, "accountName": "Summit & Partners" }
+]

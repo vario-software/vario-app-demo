@@ -1,0 +1,5 @@
+[
+  { "name1": "Acme Corp", "street": "Hauptstr. 1", "postcode": "10115", "city": "Berlin", "countryCode": "DE" },
+  { "name1": "Globex Inc", "street": "Technikweg 5", "postcode": "80331", "city": "München", "countryCode": "DE" },
+  { "name1": "Summit & Partners", "street": "Marktplatz 12", "postcode": "50667", "city": "Köln", "countryCode": "DE" }
+]
