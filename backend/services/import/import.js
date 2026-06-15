@@ -115,7 +115,10 @@ async function uploadDemoData(importId)
     const request = new Api(link.uploadUri, {
       inputStream: Readable.from(buf),
       method: 'PUT',
-      headers: { 'Content-Type': null },
+      headers: { 
+        'Content-Type': null, 
+        'Content-Length': buf.length 
+      },
     });
     await request.execute();
 
