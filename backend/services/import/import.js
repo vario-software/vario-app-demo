@@ -19,7 +19,7 @@ async function runDemoImport()
   await pollUntil(() => isFileAttached(resource.id));
 
   await createImportRuns(importId);
-  await pollUntil(() => isDataExtracted(importId));
+  await pollUntil(() => isExtractionComplete(importId));
 
   await executeImport(importId);
 
@@ -61,13 +61,13 @@ async function isFileAttached(resourceId)
   return data.state === 'FILE_ATTACHED';
 }
 
-async function isDataExtracted(importId)
+async function isExtractionComplete(importId)
 {
   const { data } = await getApp().erp.fetch(
     `/cmn/data-import/runs/multi-part/${importId}`,
   );
 
-  return data.orderedRuleSets.every(rs => rs.importRun?.state === 'DATA_EXTRACTED');
+  return data.orderedRuleSets.every(rs => !['CREATED', 'EXTRACTING_DATA'].includes(rs.importRun?.state));
 }
 
 /*

@@ -18,28 +18,33 @@ window.addEventListener('DOMContentLoaded', () =>
   setupDemoActionButton();
   setupImportDemoButton();
   setupBacklinkButton();
+  setupTabs();
 
-  setupFullscreenButton();
   setupNotificationButton();
-  setupDialogButton();
-  setupSearchDialogButtons();
   setupSimpleConfirmButton();
   setupCustomConfirmButton();
   setupFormularConfirmButton();
+  setupDialogButton();
+  setupSearchDialogButtons();
+  setupNewTabButton();
   setupClipboardButton();
   setupClipboardReadButton();
-  setupNewTabButton();
-  setupSensorTestButton();
-  setupGeolocationButton();
   setupUpdateButton();
   setupDocumentTitleButton();
   setupCronButton();
   setupDatepickerButton();
+  setupColorpickerButton();
+  setupBadgeButton();
+  setupCustomActivityButton();
+  setupVrButton();
+
+  setupFullscreenButton();
+  setupSensorTestButton();
+  setupGeolocationButton();
   setupShareButton();
   setupMicrophoneButton();
   setupCameraButton();
   setupScreenShareButton();
-  setupVrButton();
 });
 
 let me;
@@ -204,6 +209,42 @@ function setupBacklinkButton()
         timeout: 10000,
       },
     }),
+  });
+}
+
+function setupTabs()
+{
+  const tabs = [
+    { name: 'tab-1', label: 'Tab 1' },
+    { name: 'tab-2', label: 'Tab 2' },
+    { name: 'tab-3', label: 'Tab 3' },
+  ];
+
+  let activeSubTab = new URL(window.location.href).searchParams.get('subTab') || tabs[0].name;
+
+  sendMain({ stickynavTabs: tabs });
+
+  receiveMain({
+    route: route =>
+    {
+      const subTab = route?.params?.subTab;
+      const tab = tabs.find(t => t.name === subTab);
+
+      if (!tab || subTab === activeSubTab)
+      {
+        return;
+      }
+
+      activeSubTab = subTab;
+
+      sendMain({
+        notify: {
+          type: 'info',
+          message: `${tab.label} klicked`,
+          icon: 'fal fa-folder-tree',
+        },
+      });
+    },
   });
 }
 
@@ -604,6 +645,79 @@ function setupDatepickerButton()
         },
       });
     },
+  });
+}
+
+function setupColorpickerButton()
+{
+  document.querySelector('.v-button#colorpicker').addEventListener('click', () => sendMain({
+    colorpicker: {
+      title: 'Brand-Color',
+      initialValue: '#8e44ad',
+      defaultView: 'palette',
+      key: 'brand-color',
+    },
+  }));
+
+  receiveMain({
+    'colorpicker-brand-color': (value) =>
+    {
+      const hex = JSON.parse(value).value;
+
+      sendMain({
+        notify: {
+          message: `Color: ${hex}`,
+          icon: 'fal fa-palette',
+          color: hex,
+          textColor: '#fff',
+          timeout: 6000,
+        },
+      });
+    },
+  });
+}
+
+function setupBadgeButton()
+{
+  let badgeSet = false;
+
+  document.querySelector('.v-button#badge').addEventListener('click', () =>
+  {
+    badgeSet = !badgeSet;
+
+    const label = badgeSet ? 'custom badge' : '';
+
+    sendMain({ badge: { label } });
+
+    sendMain({
+      notify: {
+        message: badgeSet ? 'Badge set to "custom badge"' : 'Badge cleared',
+        icon: 'fal fa-badge',
+      },
+    });
+  });
+}
+
+function setupCustomActivityButton()
+{
+  document.querySelector('.v-button#custom-activity').addEventListener('click', () =>
+  {
+    sendMain({ customActivity: true });
+
+    sendMain({
+      notify: {
+        message: 'Activity Signal',
+        icon: 'fal fa-heart-pulse',
+      },
+    });
+
+    sendMain({
+      notify: {
+        type: 'info',
+        message: 'Resets 120s idle timer, keeps access-token renewal alive → prevents auto-logout',
+        timeout: 12000,
+      },
+    });
   });
 }
 
