@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { getApp, getRequest, getTenant } = require('@vario-software/vario-app-framework-backend/utils/context');
+const { getRequest } = require('@vario-software/vario-app-framework-backend/utils/context.js');
 const MigratorErp = require('@vario-software/vario-app-framework-backend/utils/migrator.js');
 const eavGroupDemoapp = require('./static/erp/eav-groups/demoapp.json');
 
@@ -21,11 +21,10 @@ async function createEavStructure(methods)
 
 async function createWebhook(methods)
 {
-  // Todo: process.env.WEBHOOK_HOST muss geändert werden
-  // methods.registerWebhook(
-  //   'crm-activity.create',
-  //   `https://${getRequest().get('host')}/api/webhooks/crm-activity.create`,
-  // );
+   methods.registerWebhook(
+     'crmActivity.create',
+     `/api/webhooks/crm-activity.create`,
+   );
 }
 
 async function updateScript(methods)
