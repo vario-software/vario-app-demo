@@ -1,19 +1,28 @@
 function setup(app)
 {
-  app.apiServer.post('/webhooks/crm-activity.create', async (req, res) =>
-{
+  app.apiServer.post('/webhooks/crm-activity.create', async (req, res) => 
+  {
     res.status(200).send({ success: true });
 
     const { id } = req.body;
 
-    const { data: activity } = await app.erp.fetch(`/erp/crm-activities/${id}`);
+    await app.executionQueue.keyed(`crm-activity.create:${id}`, () =>
+      handleCrmActivityCreate(app, req),
+    );
+  });
+}
 
-    activity.custom.demoapp.reference = String(Math.floor(Math.random() * 100000));
+async function handleCrmActivityCreate(app, req)
+{
+  const { id } = req.body;
 
-    await app.erp.fetch(`/erp/crm-activities/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify(activity),
-      });
+  const { data: activity } = await app.erp.fetch(`/erp/crm-activities/${id}`);
+
+  activity.custom.demoapp.reference = String(Math.floor(Math.random() * 100000));
+
+  await app.erp.fetch(`/erp/crm-activities/${id}`, {
+    method: 'POST',
+    body: JSON.stringify(activity),
   });
 }
 
